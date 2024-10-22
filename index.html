@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2119084280661480"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-2119084280661480">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2119084280661480"
+     crossorigin="anonymous"></script>
+    <title>HarshWhyFi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMv0Y1DkAm1T7KX2nLEpL6qMUL5K5U5V9P2hP1" crossorigin="anonymous">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 120px;
+            margin: 20px auto;
+        }
+
+        .separator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .line {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            margin: 2px 0;
+        }
+
+        .slider {
+            position: relative;
+            max-height: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 300px;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+            will-change: transform;
+        }
+
+        /* Lazy loading optimization */
+        .slide img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .slide img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .nav-button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .search-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-section input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .search-section button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1AA260;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-section button:hover {
+            background-color: #16a34a;
+        }
+
+        .about-me {
+            background: #1AA260;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .posts-headline {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 15px;
+            padding: 5px;
+            background-color: rgba(232, 241, 212, 0.1);
+            border: 2px solid #E8F1D4;
+            box-shadow: 0 4px 10px rgba(232, 241, 212, 0.3);
+            border-radius: 8px;
+            color: #E8F1D4;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(232, 241, 212, 0.3);
+        }
+
+        article:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(232, 241, 212, 0.5);
+        }
+
+        article h2 {
+            font-size: 1.5rem;
+            color: #1AA260;
+            margin-bottom: 10px;
+        }
+
+        article img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        article img:hover {
+            transform: scale(1.03);
+        }
+
+        article p {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .read-more-btn {
+            background-color: #1AA260;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .read-more-btn:hover {
+            background-color: #16a34a;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #E8F1D4;
+            margin-top: 20px;
+        }
+
+        .breaking-news {
+            background-color: yellow;
+            color: black;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .bitcoin-index {
+            background-color: #1AA260;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1AA260;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .slider {
+                max-height: 200px;
+            }
+
+            .slide img {
+                height: 200px;
+            }
+
+            .blog-posts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider {
+                max-height: 150px;
+            }
+
+            .slide img {
+                height: 150px;
+            }
+
+            article h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_s2GcRHWvKiztTQtmw1LHKLAMSWJLxDiggqvGkLr-cFaGYk_sNTMgYcdZ0IoWKanMvsbUTGPPgX60OGdPLNijkkcQweaYvxSZjaQOg5EwJJFazQgYZf48FUPKavV7pXnovtfNE7BGoGfNjp6sMrC4cc1Jv_UUcVjhF9uv3Xl9rG9grLvV9uVmvdia-nMu/s3264/20241010_073813.png"
+            alt="Logo">
+    </header>
+    
+    <div class="breaking-news">
+        Breaking News: New features coming to the blog next week! Stay tuned for more updates.
+    </div>
+<div class="bitcoin-index" id="bitcoin-index">
+        Bitcoin Price Index Loading...
+    </div>
+
+    <div class="separator">
+        <div class="line"></div>
+        <div class="line" style="width: 50%;"></div>
+        <div class="line"></div>
+    </div>
+
+    <div class="slider">
+        <div class="slides">
+            <div class="slide">
+                <img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizZc1OABwXq4fw3OiwWDxWehRiUlRbTdgLGubQZoHTWhdmZcx1BSpymX2RY2wHj-Lt9C03VNiv12EUPyQu0Cpq_4KoUPrsXQjh3W_iXN49nvttWhY-3lkNGku9X7cTJoeJ8jN0xCNZy9xAQ_gSr3ospD1etrpo-fmENsHLfusAsyl_RkxZ4UKzqyFlOM3D/s3264/20241010_140131~2.jpg"
+                    alt="Slide 1">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="search-section">
+            <input type="text" id="search-input" placeholder="Search blog...">
+            <button id="search-btn">Search</button>
+        </section>
+
+        <section class="about-me">
+            <h2>About Me</h2>
+            <p>I’m Harsh, a passionate photographer and skilled color grader. I love capturing moments and enhancing them through the art of editing. Alongside my creative work, I’m a dedicated trader who enjoys analyzing the financial markets. I aim to blend creativity and strategy in all my pursuits!
+<a href="https://harshwhyficontactform.netlify.app/" class="contact-button">CONTACT</a></p>
+        </section>
+
+        <h2 class="posts-headline">Latest Blog Posts</h2>
+
+        <section class="blog-posts" id="blog-posts">
+            <article>
+                <h2>NETFLIX & PRIME VIDEOS</h2>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQjxC1Q0yZ5N8XWRpaTiRw7qcgOll1X1zNbLp2oS2MuT0G8GRks7jwZTDMnR7Q9JtnScb142pLl1R406Nd-gAq80vuMNAsN7Z6oifw-hBxH8VWjRis4EuuhdjN_sE9Fkq7GvzkJfwvnxOut6WjYz4n5ma63ziJ29zhNwY5yPBCg2UyG06McReqaHfYKC2A/s3264/20241002_210805.jpg" alt="NETFLIX & PRIME VIDEOS">
+                <p>Watch Netflix & Prime Videos for Free.For Id Pass Contact Admin.Most popular digital streaming OTT platforms that offer a wide range of entertainment content...</p>
+                <a href="https://harshsharmabio.blogspot.com/p/login-page-box-sizing-border-box-margin.html?m=1" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>DOWNLOAD LATEST MOVIES & WEB-SERIES</h2>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzgy7y8eY3G2eOEI1UDNhvCRPomi36YeLQ4qw2-hRbjrUUJKWh31HjPYYdJ8P8pc60eQ1jkhaSTASarLadrEVR4Osj6Ydsc3tzNm0KZUoUDTp5fQlp6qf-lYgeQ-pQsQ2YULaTkpHv03cme5kumYJ2-hwkdbXY2j4jn0anL7sq5BqjxeB3Ggl_AK-IuTTK/s3264/20241002_212744.jpg" alt="DOWNLOAD LATEST MOVIES & WEB-SERIES">
+                <p>The first site I'd like to introduce is WhyFiMovies, one of the most popular web series download sites that offer a wide selection of the latest ...</p>
+                <a href="https://harshsharmabio.blogspot.com/p/login-page-box-sizing-border-box-margin_3.html?m=1" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>CRUNCHYROLL PREMIUM</h2>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQBWhyphenhyphenWFm3zD1H33y1l5YwN3lKJXBqANOObxteXgT02TUOzfoRi0-pPLRfq3OcKooVFSPMEl4xRr5_tgWNJoQ5IPXlZzLImmgqTYsvRVhqGGjy07VZCnt2zxJ1W0IG_TMNjUIb5_BVM4eVsB4ZtV4SbdWLK0-hAxdpNiTXZpm1_lCPHywDLqqCnGcElgzS/s3264/20241002_214324.jpg" alt="CRUNCHYROLL PREMIUM">
+                <p>Embark on an anime adventure with Crunchyroll, your ultimate destination for watching a vast collection of anime series and movies.</p>
+                <a href="https://harshsharmabio.blogspot.com/p/crunchyroll-premium-accounts.html?m=1" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>USE VIRTUAL PC</h2>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqVvj4b72apn8iyL4uBi9yvOE0P4x6F7ummekdBZqQHd0rcvzoMH8HnXQk6sBIJSZCttWbijOBuzfBSelzpVc3_0wiZwbl7AhY-z_FRvFDCoI6f4jxb4Q3G4fwfldydFlbBV38Xgp1Ix2rCEubfuaBYMy93dY19yxxkwjepfxBMIkaE7wWIFVROgJJ-6vh/s3264/20241002_213118.jpg" alt="USE VIRTUAL PC">
+                <p>The Remote Desktop web client lets you use a compatible web browser to access your organization's remote resources...</p>
+                <a href="https://app.apponfly.com/trial" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>PLAY MUSIC</h2>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf2kvCLx6bHbwMv0sp-cTRzY7rS1vxyCkIE-Nd_oaf_NpRa3NG_tn2gRqz&s=10" alt="PLAY MUSIC">
+                <p>A new music service with official albums, singles, videos, remixes, live performances and more for Android, iOS and desktop. It's all here...</p>
+                <a href="https://harshsharmabio.blogspot.com/p/youtube-audio-player-with-advanced.html?m=1" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>IMAGE 2 PDF CONVERTER</h2>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrPVRVewN3OvGVXVfLq7DAWFrlRkjOyLwgXatD8lpMyfEzepexYRJf1vfA&s=10" alt="IMAGE 2 PDF CONVERTER">
+                <p>Convert images to PDF for free online. Our JPG or PNG to PDF Converter turns any image file into a custom PDF file - No file size limits...</p>
+                <a href="https://harshsharmabio.blogspot.com/p/image-to-pdf-converter-box-sizing.html?m=1" class="read-more-btn">OPEN</a>
+            </article>
+
+            <article>
+                <h2>TRY GEMINI ADVANCED</h2>
+                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg6BXCc3RQslG2h_MB6cSuY5iWvxh5JTo2ngJZK_TViCI3Rn81X5lqV6aViIW-dh0ZYUeMhMgPEp1eXi-_1W4OQZ2GNyrd3XOScl7g_NksGeDEcg06gErMVtJgE6keosdRqSu3tMqwLIaGGOzXAxKn4nfypGNqKWRqYATCjvLpWBQEa_M9N0s1DY_FN-r0" alt="TRY GEMINI ADVANCED">
+                <p>You can upgrade to Gemini Advanced, which is part of the Google One AI Premium paid plan that also includes: Gemini in Gmail, Docs, and more; 2TB of storage...</p>
+                <a href="https://www.instagram.com/harshsharma_33?igsh=enVpbmZpeXk2Zmg3" class="read-more-btn">CONTACT</a>
+            </article>
+        </section>
+
+        <div class="no-results" id="no-results" style="display:none;">
+            <p>No results found for your search query.</p>
+        </div>
+    </main>
+
+    <footer>  
+        Designed With ❤️ By Harsh Sharma
+    </footer>
+<script>
+        // Fetch Bitcoin price every 500 milliseconds
+        function fetchBitcoinPrice() {
+            fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+                .then(response => response.json())
+                .then(data => {
+                    const bitcoinPriceUSD = data.bpi.USD.rate;
+                    document.getElementById('bitcoin-index').innerHTML = `Bitcoin Price: $${bitcoinPriceUSD}`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Bitcoin data:', error);
+                });
+        }
+
+        // Update Bitcoin price every 500 milliseconds
+        setInterval(fetchBitcoinPrice, 500);
+
+        // Slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slides .slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -currentSlide * 100;
+            document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+        }
+    </script>
+    <script>
+        // Debounce function for throttling search input
+        function debounce(func, delay) {
+            let debounceTimer;
+            return function(...args) {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        // Search functionality with debouncing
+        const searchPosts = debounce(function() {
+            const query = document.getElementById("search-input").value.toLowerCase();
+            const posts = document.querySelectorAll("article");
+            let resultsFound = false;
+
+            posts.forEach(post => {
+                const title = post.querySelector("h2").textContent.toLowerCase();
+                const description = post.querySelector("p").textContent.toLowerCase();
+
+                if (title.includes(query) || description.includes(query)) {
+                    post.style.display = "block";
+                    resultsFound = true;
+                } else {
+                    post.style.display = "none";
+                }
+            });
+
+            const noResults = document.getElementById("no-results");
+            noResults.style.display = resultsFound ? "none" : "block";
+        }, 300); // 300ms debounce
+
+        document.getElementById("search-input").addEventListener("input", searchPosts);
+
+        // Slider functionality with throttling
+        let isThrottled = false;
+
+        function throttledNextSlide() {
+            if (isThrottled) return;
+            isThrottled = true;
+            // Add logic for sliding to next image
+            requestAnimationFrame(() => {
+                // Placeholder for sliding logic
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 500); // Adjust this to match the CSS transition time
+            });
+        }
+
+        function throttledPrevSlide() {
+            if (isThrottled) return;
+            isThrottled = true;
+            // Add logic for sliding to previous image
+            requestAnimationFrame(() => {
+                // Placeholder for sliding logic
+                setTimeout(() => {
+                    isThrottled = false;
+                }, 500);
+            });
+        }
+
+        // Lazy load event listener for images
+        document.addEventListener("DOMContentLoaded", () => {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            lazyImages.forEach(img => {
+                img.onload = () => img.classList.add('loaded');
+            });
+        });
+    </script>
+</body>
+
+</html>
